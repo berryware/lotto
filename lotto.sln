@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lotto", "lotto\lotto.csproj", "{FE6E5385-C5AC-42CD-94CF-AD20D5A137BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lotto.test", "lotto.test\lotto.test.csproj", "{99E2BAF6-5FA5-4DBF-9F74-05164B809CD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE6E5385-C5AC-42CD-94CF-AD20D5A137BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6E5385-C5AC-42CD-94CF-AD20D5A137BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6E5385-C5AC-42CD-94CF-AD20D5A137BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6E5385-C5AC-42CD-94CF-AD20D5A137BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E2BAF6-5FA5-4DBF-9F74-05164B809CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E2BAF6-5FA5-4DBF-9F74-05164B809CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E2BAF6-5FA5-4DBF-9F74-05164B809CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E2BAF6-5FA5-4DBF-9F74-05164B809CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

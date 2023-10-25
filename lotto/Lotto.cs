@@ -1,8 +1,16 @@
-
 namespace lotto;
 
+/// <summary>
+/// Generate minimum number of lottery picks to use all the available numbers
+/// </summary>
 public class Lotto
 {
+  /// <summary>
+  /// Executes the lottery number for the specified lottery parameters
+  /// </summary>
+  /// <param name="args"></param>
+  /// <returns>0 - if successful, not 0 if error</returns>
+  /// <exception cref="ArgumentException"></exception>
   public static int Execute(string[] args)
   {
     int rc = 0;

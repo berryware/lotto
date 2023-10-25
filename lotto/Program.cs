@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using lotto;
 
-using lotto;
-
+// run the lotto program
 return Lotto.Execute(args);

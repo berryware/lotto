@@ -11,23 +11,23 @@ public class Pool : IEnumerator<List<ushort>>
   public ushort NumPicks { get; }
   
   
-  public Pool(ushort maxPick, ushort numPicks)
+  public Pool(ushort numPicks, ushort maxPick)
   {
-    MaxPick = maxPick;
     NumPicks = numPicks;
-    _available = LoadAvailable(numPicks);
+    MaxPick = maxPick;
+    _available = LoadAvailable(maxPick);
     Current = new List<ushort>();
   }
 
-  private List<ushort> LoadAvailable(ushort balls, List<ushort>? exclude = null)
+  private List<ushort> LoadAvailable(ushort maxPick, List<ushort>? exclude = null)
   {
     var available = new List<ushort>();
-    ushort ball = 0;
-    while (ball < balls)
+    ushort pick = 0;
+    while (pick < maxPick)
     {
-      ++ball;
-      if (exclude==null || !exclude.Contains(ball))
-        available.Add(ball);
+      ++pick;
+      if (exclude==null || !exclude.Contains(pick))
+        available.Add(pick);
     }
 
     return available;
@@ -35,28 +35,27 @@ public class Pool : IEnumerator<List<ushort>>
 
   public ushort MinBoards()
   {
-    double boards = NumPicks;
-    boards = Math.Ceiling(boards / MaxPick);
+    double boards = Math.Ceiling((double)MaxPick / NumPicks);
     return (ushort)boards;
   }
 
   private void GetNextBoard()
   {
     Current.Clear();
-    if (_available.Count < MaxPick)
+    if (_available.Count < NumPicks)
     {
       Current.AddRange(_available);
-      _available = LoadAvailable(NumPicks, Current);
+      _available = LoadAvailable(MaxPick, Current);
     }
 
-    while (Current.Count < MaxPick)
+    while (Current.Count < NumPicks)
     {
       int pick = _random.Next(0, _available.Count - 1);
       Current.Add(_available[pick]);
       _available.RemoveAt(pick);
       if (!_available.Any())
       {
-        _available = LoadAvailable(NumPicks, Current);
+        _available = LoadAvailable(MaxPick, Current);
       }
     }
     

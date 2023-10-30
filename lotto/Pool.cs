@@ -7,15 +7,15 @@ public class Pool : IEnumerator<List<ushort>>
 {
   private static Random _random = new Random();
   private List<ushort> _available;
-  public ushort Picks { get; }
-  public ushort Balls { get; }
+  public ushort MaxPick { get; }
+  public ushort NumPicks { get; }
   
   
-  public Pool(ushort picks, ushort balls)
+  public Pool(ushort maxPick, ushort numPicks)
   {
-    Picks = picks;
-    Balls = balls;
-    _available = LoadAvailable(balls);
+    MaxPick = maxPick;
+    NumPicks = numPicks;
+    _available = LoadAvailable(numPicks);
     Current = new List<ushort>();
   }
 
@@ -35,28 +35,28 @@ public class Pool : IEnumerator<List<ushort>>
 
   public ushort MinBoards()
   {
-    double boards = Balls;
-    boards = Math.Ceiling(boards / Picks);
+    double boards = NumPicks;
+    boards = Math.Ceiling(boards / MaxPick);
     return (ushort)boards;
   }
 
   private void GetNextBoard()
   {
     Current.Clear();
-    if (_available.Count < Picks)
+    if (_available.Count < MaxPick)
     {
       Current.AddRange(_available);
-      _available = LoadAvailable(Balls, Current);
+      _available = LoadAvailable(NumPicks, Current);
     }
 
-    while (Current.Count < Picks)
+    while (Current.Count < MaxPick)
     {
       int pick = _random.Next(0, _available.Count - 1);
       Current.Add(_available[pick]);
       _available.RemoveAt(pick);
       if (!_available.Any())
       {
-        _available = LoadAvailable(Balls, Current);
+        _available = LoadAvailable(NumPicks, Current);
       }
     }
     
